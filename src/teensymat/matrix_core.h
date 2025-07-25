@@ -45,7 +45,7 @@ public:
   /*! Access an element of the matrix by position.
    *
    * @param row Row of the element to be accessed
-   * @para col Column of the element to be accessed
+   * @param col Column of the element to be accessed
    * @return Pointer to element of the matrix at position (row,col)
    * */
   Scalar *operator()(size_t row, size_t col) {
