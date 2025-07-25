@@ -1,5 +1,8 @@
-add_library(teensy_matrix
-  matrix_core.h 
+add_library(teensymat
+  matrix_core.h
 )
 
-target_include_directories(matrix PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+set_target_properties(teensymat PROPERTIES LINKER_LANGUAGE CXX)
+
+
+target_include_directories(teensymat PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
