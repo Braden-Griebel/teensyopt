@@ -1,5 +1,4 @@
-#ifndef TEENSYOPT_TEENSYMAT_MATRIX_CORE
-#define TEENSYOPT_TEENSYMAT_MATRIX_CORE
+#pragma once
 // std includes
 #include <initializer_list>
 #include <stdexcept>
@@ -98,4 +97,3 @@ public:
   }
 }; // namespace template<typenameScalar>class TeensyMatrix
 } // namespace teensymat
-#endif // TEENSYOPT_TEENSYMAT_MATRIX_CORE

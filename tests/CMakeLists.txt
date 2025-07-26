@@ -10,10 +10,10 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 add_executable(tests
-  test_matrix.cpp
+  src/test_matrix.cpp
 )
 
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain teensymat)
+target_link_libraries(tests PRIVATE Catch2::Catch2WithMain TeensyOpt)
 list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 include(CTest)
 include(Catch)
