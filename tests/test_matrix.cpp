@@ -20,7 +20,7 @@ TEST_CASE("Matrix Construction", "[matrix_core]") {
   }
   SECTION("Creating a matrix with initializer list") {
     // Create a 2x3 matrix with elements 1 to 6
-    auto test_matrix = teensymat::Matrix<double>{2, 3, {1, 2, 3, 4, 5, 6}};
+    auto test_matrix = teensymat::Matrix<int>{2, 3, {1, 2, 3, 4, 5, 6}};
     // Check that the elements were set correctly
     int row;
     int col;
@@ -29,5 +29,18 @@ TEST_CASE("Matrix Construction", "[matrix_core]") {
       col = i % 3;
       REQUIRE(*test_matrix(row, col) == i + 1);
     }
+  }
+}
+
+TEST_CASE("Basic Matrix Operations", "[operations]") {
+  SECTION("Swap Rows") {
+    auto test_matrix = teensymat::Matrix<int>{3, 2, {1, 2, 3, 4, 5, 6}};
+    // Swap the first and second row
+    test_matrix.swap_row(0, 1);
+    // Check that the rows are indeed swapped
+    REQUIRE(*test_matrix(0, 0) == 3);
+    REQUIRE(*test_matrix(0, 1) == 4);
+    REQUIRE(*test_matrix(1, 0) == 1);
+    REQUIRE(*test_matrix(1, 1) == 2);
   }
 }

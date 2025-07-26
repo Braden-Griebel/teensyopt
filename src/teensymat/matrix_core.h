@@ -90,20 +90,10 @@ public:
    * */
   void swap_row(size_t row1, size_t row2) {
     Scalar swap_tmp;
-    size_t data_index;
-    size_t row1_data_index;
-    size_t row2_data_index;
-    for (int col_idx = 0; col_idx < this->ncols; col_idx++) {
-      row1_data_index = this->row_stride * row1 + this->col_stride * col_idx;
-      row2_data_index = this->row_stride * row2 + this->col_stride * col_idx;
-      if (row1_data_index >= this->data.size() ||
-          row2_data_index >= this->data.size()) {
-        throw std::range_error(
-            "Tried accessing element beyond Matrix data during row swap");
-      }
-      swap_tmp = this->data[row1_data_index];
-      this->data[row1_data_index] = this->data[row2_data_index];
-      this->data[row2_data_index] = swap_tmp;
+    for (int col = 0; col < this->ncols; col++) {
+      swap_tmp = *(*this)(row1, col);
+      *(*this)(row1, col) = *(*this)(row2, col);
+      *(*this)(row2, col) = swap_tmp;
     }
   }
 }; // namespace template<typenameScalar>class TeensyMatrix
