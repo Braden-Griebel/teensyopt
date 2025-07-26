@@ -2,7 +2,7 @@
 #include "catch2/catch_test_macros.hpp"
 
 // Local Includes
-#include "matrix_core.h"
+#include "matrix_core.hpp"
 
 TEST_CASE("Matrix Construction", "[matrix_core]") {
   SECTION("Creating an empty matrix") {
