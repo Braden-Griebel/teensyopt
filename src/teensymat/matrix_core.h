@@ -1,6 +1,7 @@
 #ifndef TEENSYOPT_TEENSYMAT_MATRIX_CORE
 #define TEENSYOPT_TEENSYMAT_MATRIX_CORE
 // std includes
+#include <initializer_list>
 #include <stdexcept>
 #include <vector>
 
@@ -33,15 +34,38 @@ public:
    * @param ncols Number of columns the new Matrix will have
    * */
   Matrix(size_t nrows, size_t ncols) : Matrix(nrows, ncols, (Scalar)0) {};
-  /*! Construct a matrix will all entried set to elem.
+  /*! Construct a matrix will all entried set to element.
    *
    * @param nrows Number of rows the new Matrix will have
    * @param ncols Number of columns the new Matrix will have
-   * @param elem The initial value each entry of the matrix will have
+   * @param element The initial value each entry of the matrix will have
    * */
-  Matrix(size_t nrows, size_t ncols, Scalar elem)
+  Matrix(size_t nrows, size_t ncols, Scalar element)
       : nrows(nrows), ncols(ncols), matrix_size(nrows * ncols),
-        row_stride(ncols), col_stride(1), data(nrows * ncols, elem) {}
+        row_stride(ncols), col_stride(1), data(nrows * ncols, element) {}
+  /*! Construct a Matrix with values from an initializer list
+   *
+   * @param nrows Number of rows the new Matrix will have
+   * @param ncols Number of columns the new Matrix will have
+   * @param elements Values of the elements of the new Matrix, will be set in
+   * row major order
+   * */
+  Matrix(size_t nrows, size_t ncols, std::initializer_list<Scalar> elements)
+      : nrows(nrows), ncols(ncols), matrix_size(nrows * ncols),
+        row_stride(ncols), col_stride(1), data(nrows * ncols, (Scalar)0) {
+    size_t data_index = 0;
+    for (Scalar elem : elements) {
+      if (data_index >= this->data.size()) {
+        throw std::range_error(
+            "Received too many elements to initialize Matrix");
+      }
+      this->data[data_index] = elem;
+      data_index++;
+    }
+    if (data_index != this->data.size()) {
+      throw std::range_error("Received too few elements to initialize Matrix");
+    }
+  }
   /*! Access an element of the matrix by position.
    *
    * @param row Row of the element to be accessed
@@ -58,6 +82,29 @@ public:
       throw std::range_error("Tried accessing element beyond Matrix data");
     }
     return &(this->data[data_position]);
+  }
+  /*! Swap the values held in two rows of the Matrix
+   *
+   * @param row1 First row to swap
+   * @param row2 Second row to swap
+   * */
+  void swap_row(size_t row1, size_t row2) {
+    Scalar swap_tmp;
+    size_t data_index;
+    size_t row1_data_index;
+    size_t row2_data_index;
+    for (int col_idx = 0; col_idx < this->ncols; col_idx++) {
+      row1_data_index = this->row_stride * row1 + this->col_stride * col_idx;
+      row2_data_index = this->row_stride * row2 + this->col_stride * col_idx;
+      if (row1_data_index >= this->data.size() ||
+          row2_data_index >= this->data.size()) {
+        throw std::range_error(
+            "Tried accessing element beyond Matrix data during row swap");
+      }
+      swap_tmp = this->data[row1_data_index];
+      this->data[row1_data_index] = this->data[row2_data_index];
+      this->data[row2_data_index] = swap_tmp;
+    }
   }
 }; // namespace template<typenameScalar>class TeensyMatrix
 } // namespace teensymat

@@ -18,4 +18,16 @@ TEST_CASE("Matrix Construction", "[matrix_core]") {
       }
     }
   }
+  SECTION("Creating a matrix with initializer list") {
+    // Create a 2x3 matrix with elements 1 to 6
+    auto test_matrix = teensymat::Matrix<double>{2, 3, {1, 2, 3, 4, 5, 6}};
+    // Check that the elements were set correctly
+    int row;
+    int col;
+    for (int i = 0; i < 6; i++) {
+      row = i / 3;
+      col = i % 3;
+      REQUIRE(*test_matrix(row, col) == i + 1);
+    }
+  }
 }
