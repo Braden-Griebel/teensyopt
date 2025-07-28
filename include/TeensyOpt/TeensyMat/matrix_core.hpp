@@ -2,6 +2,7 @@
 // std includes
 #include <initializer_list>
 #include <stdexcept>
+#include <utility>
 #include <vector>
 
 namespace teensymat {
@@ -90,9 +91,7 @@ public:
   void swap_row(size_t row1, size_t row2) {
     Scalar swap_tmp;
     for (int col = 0; col < this->ncols; col++) {
-      swap_tmp = *(*this)(row1, col);
-      *(*this)(row1, col) = *(*this)(row2, col);
-      *(*this)(row2, col) = swap_tmp;
+      std::swap(*(*this)(row1, col), *(*this)(row2, col));
     }
   }
 }; // namespace template<typenameScalar>class TeensyMatrix
