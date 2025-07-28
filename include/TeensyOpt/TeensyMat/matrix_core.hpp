@@ -108,7 +108,7 @@ public:
    * @param row Which row to multiply
    * @param by What to multiple the row by
    * */
-  void mult_row(size_t row, Scalar by) {
+  void mult_row_scalar(size_t row, Scalar by) {
     for (size_t col = 0; col < this->ncols; col++) {
       *(*this)(row, col) *= by;
     }
@@ -118,7 +118,7 @@ public:
    * @param column Which col to multiply
    * @param by What to multiple the column by
    * */
-  void mult_col(size_t column, Scalar by) {
+  void mult_col_scalar(size_t column, Scalar by) {
     for (size_t row = 0; row < this->nrows; row++) {
       *(*this)(row, column) *= by;
     }
@@ -128,20 +128,22 @@ public:
    * @param row Which row to divide
    * @param by What to divide the row by
    * */
-  void div_row(size_t row, Scalar by) { this->mult_row(row, ((Scalar)1) / by); }
+  void div_row_scalar(size_t row, Scalar by) {
+    this->mult_row_scalar(row, ((Scalar)1) / by);
+  }
   /*! Divide a column by a given value.
    *
    * @param column Which column to divide
    * @param by What to divide the column by
    * */
-  void div_col(size_t column, Scalar by) {
-    this->mult_row(column, ((Scalar)1) / by);
+  void div_col_scalar(size_t column, Scalar by) {
+    this->mult_row_scalar(column, ((Scalar)1) / by);
   }
   /*! Add a value to each element in a row.
    * @param row Which row to add the value to
    * @param what What to add to the elements of the row
    * */
-  void add_row(size_t row, Scalar what) {
+  void add_row_scalar(size_t row, Scalar what) {
     for (size_t col = 0; col < this->ncols; col++) {
       *(*this)(row, col) += what;
     }
@@ -150,7 +152,7 @@ public:
    * @param column Which column to add the value to
    * @param what What to add to the elements of the column
    * */
-  void add_col(size_t column, Scalar what) {
+  void add_col_scalar(size_t column, Scalar what) {
     for (size_t row = 0; row < this->nrows; row++) {
       *(*this)(row, column) += what;
     }
@@ -160,12 +162,56 @@ public:
    * @param row Which row to subtract the value from
    * @param what What to subtract from the elements of the row
    * */
-  void sub_row(size_t row, Scalar what) { this->sub_row(row, -what); }
+  void sub_row_scalar(size_t row, Scalar what) {
+    this->sub_row_scalar(row, -what);
+  }
   /*! Subtract a value from each element in a column.
    *
    * @param column Which column to subtract the value from
    * @param what What to subtract from the elements of the column
    * */
-  void sub_col(size_t column, Scalar what) { this->sub_row(column, -what); }
+  void sub_col_scalar(size_t column, Scalar what) {
+    this->sub_row_scalar(column, -what);
+  }
+  /*! Add row2 to row1, storing the result in row1.
+   *
+   * @param row1 First row to add, also row into which the result is stored
+   * @param row2 Second row to add*/
+  void add_row_elementwise(size_t row1, size_t row2) {
+    for (size_t col = 0; col < this->ncols; col++) {
+      *(*this)(row1, col) += *(*this)(row2, col);
+    }
+  }
+  /*! Add col2 to col1, storing the result in col1.
+   *
+   * @param col1 First column to add, also column into which the result is
+   * stored
+   * @param col2 Second column to add*/
+  void add_col_elementwise(size_t col1, size_t col2) {
+    for (size_t row = 0; row < this->nrows; row++) {
+      *(*this)(row, col1) += *(*this)(row, col2);
+    }
+  }
+  /*! Subtract row2 from row1, storing the result in row1.
+   *
+   * @param row1 Left hand side of subtraction, also row into which the result
+   * is stored
+   * @param row2 Right hand side of subtraction*/
+  void sub_row_elementwise(size_t row1, size_t row2) {
+    for (size_t col = 0; col < this->ncols; col++) {
+      *(*this)(row1, col) -= *(*this)(row2, col);
+    }
+  }
+  /*! Subtract col2 from col1, storing the result in col1.
+   *
+   * @param col1 Left hand side of subtraction, also column into which the
+   * result is stored
+   * @param col2 Right hand side of subtraction
+   * */
+  void sub_col_elementwise(size_t col1, size_t col2) {
+    for (size_t row = 0; row < this->nrows; row++) {
+      *(*this)(row, col1) -= *(*this)(row, col2);
+    }
+  }
 }; // namespace template<typenameScalar>class TeensyMatrix
 } // namespace teensymat

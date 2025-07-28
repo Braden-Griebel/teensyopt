@@ -56,3 +56,5 @@ CMakeUserPresets.json
 build/*
 docs/
 .cache
+.idea/
+cmake-build-debug/
