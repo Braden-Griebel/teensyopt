@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['operator_28_29_0',['operator()',['../classteensymat_1_1Matrix.html#a65b054e04d8b7f3ee04b6b291f509efa',1,'teensymat::Matrix']]]
+  ['div_5fcol_5fscalar_0',['div_col_scalar',['../classteensymat_1_1Matrix.html#a881aac93b251d51ae8bd055c82234842',1,'teensymat::Matrix']]],
+  ['div_5frow_5fscalar_1',['div_row_scalar',['../classteensymat_1_1Matrix.html#a1e19c97d73819c9b416f7338204f9d5f',1,'teensymat::Matrix']]]
 ];

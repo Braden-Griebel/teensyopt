@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['matrix_0',['Matrix',['../classteensymat_1_1Matrix.html#aecf95bfbad860ed328389101b58f64f0',1,'teensymat::Matrix::Matrix()'],['../classteensymat_1_1Matrix.html#ac354c970ec30668a8ac668df897fe6b1',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols)'],['../classteensymat_1_1Matrix.html#a23a11ec5bd3ff5dc379811c048119778',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols, Scalar element)'],['../classteensymat_1_1Matrix.html#af5cf067ad65dde3a39698f9909b86264',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols, std::initializer_list&lt; Scalar &gt; elements)']]]
+  ['add_5fcol_5felementwise_0',['add_col_elementwise',['../classteensymat_1_1Matrix.html#ab66f9c915e4a6db5763ae042737c59ca',1,'teensymat::Matrix']]],
+  ['add_5fcol_5fscalar_1',['add_col_scalar',['../classteensymat_1_1Matrix.html#ac3c9a08db5f1270edc8897c016d88672',1,'teensymat::Matrix']]],
+  ['add_5frow_5felementwise_2',['add_row_elementwise',['../classteensymat_1_1Matrix.html#a2c02f799f9a658c041871a5a5b5d5960',1,'teensymat::Matrix']]],
+  ['add_5frow_5fscalar_3',['add_row_scalar',['../classteensymat_1_1Matrix.html#aff05b25ffa4260f6eb388813b6d0d031',1,'teensymat::Matrix']]]
 ];
