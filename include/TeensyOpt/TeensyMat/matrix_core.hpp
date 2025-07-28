@@ -83,16 +83,89 @@ public:
     }
     return &(this->data[data_position]);
   }
-  /*! Swap the values held in two rows of the Matrix
+  /*! Swap the values held in two rows of the Matrix.
    *
    * @param row1 First row to swap
    * @param row2 Second row to swap
    * */
   void swap_row(size_t row1, size_t row2) {
-    Scalar swap_tmp;
-    for (int col = 0; col < this->ncols; col++) {
+    for (size_t col = 0; col < this->ncols; col++) {
       std::swap(*(*this)(row1, col), *(*this)(row2, col));
     }
   }
+  /*! Swap the values help in two columns of the Matrix.
+   *
+   * @param col1 First column to swap
+   * @param col2 Second column to swap
+   * */
+  void swap_col(size_t col1, size_t col2) {
+    for (size_t row = 0; row < this->nrows; row++) {
+      std::swap(*(*this)(row, col1), *(*this)(row, col2));
+    }
+  }
+  /*! Multiply a row by a given value.
+   *
+   * @param row Which row to multiply
+   * @param by What to multiple the row by
+   * */
+  void mult_row(size_t row, Scalar by) {
+    for (size_t col = 0; col < this->ncols; col++) {
+      *(*this)(row, col) *= by;
+    }
+  }
+  /*! Multiply a column by a given value.
+   *
+   * @param column Which col to multiply
+   * @param by What to multiple the column by
+   * */
+  void mult_col(size_t column, Scalar by) {
+    for (size_t row = 0; row < this->nrows; row++) {
+      *(*this)(row, column) *= by;
+    }
+  }
+  /*! Divide a row by a given value.
+   *
+   * @param row Which row to divide
+   * @param by What to divide the row by
+   * */
+  void div_row(size_t row, Scalar by) { this->mult_row(row, ((Scalar)1) / by); }
+  /*! Divide a column by a given value.
+   *
+   * @param column Which column to divide
+   * @param by What to divide the column by
+   * */
+  void div_col(size_t column, Scalar by) {
+    this->mult_row(column, ((Scalar)1) / by);
+  }
+  /*! Add a value to each element in a row.
+   * @param row Which row to add the value to
+   * @param what What to add to the elements of the row
+   * */
+  void add_row(size_t row, Scalar what) {
+    for (size_t col = 0; col < this->ncols; col++) {
+      *(*this)(row, col) += what;
+    }
+  }
+  /*! Add a value to each element in a column.
+   * @param column Which column to add the value to
+   * @param what What to add to the elements of the column
+   * */
+  void add_col(size_t column, Scalar what) {
+    for (size_t row = 0; row < this->nrows; row++) {
+      *(*this)(row, column) += what;
+    }
+  }
+  /*! Subtract a value from each element in a row.
+   *
+   * @param row Which row to subtract the value from
+   * @param what What to subtract from the elements of the row
+   * */
+  void sub_row(size_t row, Scalar what) { this->sub_row(row, -what); }
+  /*! Subtract a value from each element in a column.
+   *
+   * @param column Which column to subtract the value from
+   * @param what What to subtract from the elements of the column
+   * */
+  void sub_col(size_t column, Scalar what) { this->sub_row(column, -what); }
 }; // namespace template<typenameScalar>class TeensyMatrix
 } // namespace teensymat

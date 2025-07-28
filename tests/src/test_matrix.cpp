@@ -43,4 +43,16 @@ TEST_CASE("Basic Matrix Operations", "[operations]") {
     REQUIRE(*test_matrix(1, 0) == 1);
     REQUIRE(*test_matrix(1, 1) == 2);
   }
+  SECTION("Swap Columns") {
+    auto test_matrix = teensymat::Matrix<int>{3, 2, {1, 2, 3, 4, 5, 6}};
+    // Swap the first and second row
+    test_matrix.swap_col(0, 1);
+    // Check that the columns have been swapped
+    REQUIRE(*test_matrix(0, 0) == 2);
+    REQUIRE(*test_matrix(0, 1) == 1);
+    REQUIRE(*test_matrix(1, 0) == 4);
+    REQUIRE(*test_matrix(1, 1) == 3);
+    REQUIRE(*test_matrix(2, 0) == 6);
+    REQUIRE(*test_matrix(2, 1) == 5);
+  }
 }
