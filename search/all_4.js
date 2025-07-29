@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['sub_5fcol_5felementwise_0',['sub_col_elementwise',['../classteensymat_1_1Matrix.html#a84f7fe5f0fa25d6d7e25521a9dddc6b4',1,'teensymat::Matrix']]],
-  ['sub_5fcol_5fscalar_1',['sub_col_scalar',['../classteensymat_1_1Matrix.html#af9ca2a33affe83af7d5a2f8b573d5a30',1,'teensymat::Matrix']]],
-  ['sub_5frow_5felementwise_2',['sub_row_elementwise',['../classteensymat_1_1Matrix.html#ac9d183e9bcb2338934cac6efe765f7b0',1,'teensymat::Matrix']]],
-  ['sub_5frow_5fscalar_3',['sub_row_scalar',['../classteensymat_1_1Matrix.html#a7b72f7a7c0115356bc48dfd46fdc951c',1,'teensymat::Matrix']]],
-  ['swap_5fcol_4',['swap_col',['../classteensymat_1_1Matrix.html#ac3af0e8fe9a70513bf7f8def3dc8ca14',1,'teensymat::Matrix']]],
-  ['swap_5frow_5',['swap_row',['../classteensymat_1_1Matrix.html#a75eaca4a637de48caeb67d558b67b1de',1,'teensymat::Matrix']]]
+  ['matrix_0',['Matrix',['../classteensymat_1_1Matrix.html#aecf95bfbad860ed328389101b58f64f0',1,'teensymat::Matrix::Matrix()'],['../classteensymat_1_1Matrix.html#ac354c970ec30668a8ac668df897fe6b1',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols)'],['../classteensymat_1_1Matrix.html#a23a11ec5bd3ff5dc379811c048119778',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols, Scalar element)'],['../classteensymat_1_1Matrix.html#af5cf067ad65dde3a39698f9909b86264',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols, std::initializer_list&lt; Scalar &gt; elements)'],['../classteensymat_1_1Matrix.html#a6809d47217c204b984f32a087070d065',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols, std::vector&lt; Scalar &gt; elements)'],['../classteensymat_1_1Matrix.html#a007d73e76708f2ee6b383ed5be114e7c',1,'teensymat::Matrix::Matrix(size_t nrows, size_t ncols, size_t row_stride, size_t col_stride, std::vector&lt; Scalar &gt; elements)'],['../classteensymat_1_1Matrix.html',1,'teensymat::Matrix&lt; Scalar &gt;']]],
+  ['mult_5fcol_5fscalar_1',['mult_col_scalar',['../classteensymat_1_1Matrix.html#acc6f4b6208f5295030e49966545b07c4',1,'teensymat::Matrix']]],
+  ['mult_5frow_5fscalar_2',['mult_row_scalar',['../classteensymat_1_1Matrix.html#afa8c7db259f2c06e5a4a048424a4f341',1,'teensymat::Matrix']]]
 ];
